@@ -8,6 +8,8 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    padding: 10px; /* Menambahkan sedikit padding di body */
+    box-sizing: border-box; /* Memastikan padding tidak menyebabkan overflow */
     text-align: center;
     transition: background-color 0.3s;
 }
@@ -17,7 +19,7 @@ body {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    width: 90%;
+    width: 100%; /* Lebar kontainer akan diatur oleh max-width */
     max-width: 600px;
 }
 
@@ -28,6 +30,7 @@ body {
 #opening-screen h1 {
     margin-top: 0;
     color: #FCF7A6; /* Variasi Warna Font untuk Judul */
+    font-size: 2.5rem; /* Menggunakan rem untuk skala font yang lebih baik */
 }
 
 .tagline {
@@ -41,7 +44,7 @@ body {
 }
 
 .guide {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0,0,0,0.1);
     padding: 10px;
     border-radius: 8px;
     font-size: 14px;
@@ -89,6 +92,7 @@ button:hover {
 #question-text {
     min-height: 50px;
     color: #FCF7A6; /* Variasi Warna Font untuk Pertanyaan */
+    font-size: 1.25rem;
 }
 
 #answer-options {
@@ -102,8 +106,8 @@ button:hover {
 
 .answer-btn {
     background-color: transparent;
-    border: 2px solid #A6E3DD; /* Warna Aksen Utama */
-    color: #F8FAB4; /* Warna Font Utama */
+    border: 2px solid #A6E3DD;
+    color: #F8FAB4;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -114,7 +118,7 @@ button:hover {
 }
 
 .answer-btn:hover {
-    background-color: #A6E3DD; /* Warna Aksen Utama */
+    background-color: #A6E3DD;
     color: #2c3e50;
     transform: scale(1.1);
 }
@@ -134,8 +138,8 @@ button:hover {
 
 /* Styling Halaman Hasil */
 #result-screen #love-type-title {
-    color: #FCF7A6; /* Variasi Warna Font untuk Judul Hasil */
-    font-size: 28px;
+    color: #FCF7A6;
+    font-size: 2rem;
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -171,13 +175,14 @@ button:hover {
     display: grid;
     place-items: center;
     transition: --p 1s;
+    flex-shrink: 0; /* Mencegah lingkaran menyusut */
 }
 
 .progress-bar-inner-circle {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #E34F74; /* Warna Latar Sekunder */
+    background-color: #E34F74;
     display: grid;
     place-items: center;
 }
@@ -185,13 +190,12 @@ button:hover {
 .progress-bar-percentage {
     font-size: 20px;
     font-weight: bold;
-    color: #FCF7A6; /* Variasi Warna Font */
+    color: #FCF7A6;
 }
 
-/* Warna untuk setiap bar */
 #intimacy-bar { background: conic-gradient(#A6E3DD calc(var(--p) * 1%), #4d4d4d 0); }
-#passion-bar { background: conic-gradient(#FF8A8A calc(var(--p) * 1%), #4d4d4d 0); } /* Saya pertahankan warna merah unik untuk passion */
-#commitment-bar { background: conic-gradient(#A2C4E1 calc(var(--p) * 1%), #4d4d4d 0); } /* Warna Aksen Sekunder */
+#passion-bar { background: conic-gradient(#FF8A8A calc(var(--p) * 1%), #4d4d4d 0); }
+#commitment-bar { background: conic-gradient(#A2C4E1 calc(var(--p) * 1%), #4d4d4d 0); }
 
 .progress-bar-label {
     text-align: left;
@@ -214,7 +218,7 @@ button:hover {
 
 #show-more-btn {
     background-color: transparent;
-    border: 2px solid #A2C4E1; /* Warna Aksen Sekunder */
+    border: 2px solid #A2C4E1;
     color: #F8FAB4;
     margin-bottom: 15px;
 }
@@ -230,7 +234,7 @@ button:hover {
 #other-loves h4 {
     margin-top: 0;
     text-align: center;
-    color: #FCF7A6; /* Variasi Warna Font */
+    color: #FCF7A6;
 }
 
 #other-loves p {
@@ -241,4 +245,35 @@ button:hover {
 
 #other-loves p:last-child {
     border-bottom: none;
+}
+
+/* ============================================= */
+/* ## ATURAN RESPONSIVE (UNTUK TAMPILAN HP) ## */
+/* ============================================= */
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 20px; /* Kurangi padding di layar kecil */
+    }
+
+    #opening-screen h1 {
+        font-size: 2rem; /* Kecilkan font judul utama */
+    }
+
+    #question-text {
+        font-size: 1.1rem; /* Kecilkan font pertanyaan */
+    }
+
+    #result-screen #love-type-title {
+        font-size: 1.7rem; /* Kecilkan font judul hasil */
+    }
+
+    .progress-bar-wrapper {
+        flex-direction: column; /* Ubah tata letak bar hasil menjadi vertikal */
+        gap: 10px;
+        align-items: center;
+    }
+
+    .progress-bar-label {
+        text-align: center; /* Pusatkan teks label di bawah lingkaran */
+    }
 }
