@@ -1,4 +1,16 @@
 // =================================
+// MEMBUAT HATI UNTUK ANIMASI LATAR (BARU & DINAMIS)
+// =================================
+const animationContainer = document.getElementById('background-animation');
+const numberOfHearts = 15; // <-- Ubah angka ini untuk menambah/mengurangi jumlah hati!
+
+for (let i = 5; i < numberOfHearts; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    animationContainer.appendChild(heart);
+}
+
+// =================================
 // ELEMEN DOM
 // =================================
 const openingScreen = document.getElementById('opening-screen');
@@ -159,3 +171,28 @@ function toggleOtherLoves() {
 startBtn.addEventListener('click', startQuiz);
 restartBtn.addEventListener('click', startQuiz);
 showMoreBtn.addEventListener('click', toggleOtherLoves);
+
+// =================================
+// EFEK JEJAK KURSOR (BARU)
+// =================================
+document.addEventListener('mousemove', function(e) {
+    // Buat elemen span baru setiap mouse bergerak
+    let heart = document.createElement('span');
+    heart.classList.add('cursor-heart');
+
+    // Atur posisi elemen sesuai posisi kursor
+    heart.style.left = e.clientX + 'px';
+    heart.style.top = e.clientY + 'px';
+
+    // Isi elemen dengan emoji hati
+    heart.innerHTML = '❤️';
+
+    // Tambahkan elemen ke dalam body
+    document.body.appendChild(heart);
+
+    // Hapus elemen setelah animasinya selesai
+    // Ini PENTING untuk menjaga performa website!
+    heart.addEventListener('animationend', function() {
+        heart.remove();
+    });
+});

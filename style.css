@@ -1,4 +1,6 @@
-/* Styling Awal */
+/* ============================================= */
+/* ## GAYA DASAR & TATA LETAK ## */
+/* ============================================= */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #F75270; /* Warna Latar Utama */
@@ -8,10 +10,11 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 10px; /* Menambahkan sedikit padding di body */
-    box-sizing: border-box; /* Memastikan padding tidak menyebabkan overflow */
+    padding: 20px;
+    box-sizing: border-box;
     text-align: center;
     transition: background-color 0.3s;
+    overflow: hidden; /* Mencegah scrollbar muncul karena animasi */
 }
 
 .quiz-container {
@@ -19,8 +22,10 @@ body {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    width: 100%; /* Lebar kontainer akan diatur oleh max-width */
+    width: 100%;
     max-width: 600px;
+    position: relative; /* Diperlukan agar z-index berfungsi dengan baik */
+    z-index: 1; /* Posisikan di atas background */
 }
 
 .hidden {
@@ -30,7 +35,7 @@ body {
 #opening-screen h1 {
     margin-top: 0;
     color: #FCF7A6; /* Variasi Warna Font untuk Judul */
-    font-size: 2.5rem; /* Menggunakan rem untuk skala font yang lebih baik */
+    font-size: 2.5rem;
 }
 
 .tagline {
@@ -175,7 +180,7 @@ button:hover {
     display: grid;
     place-items: center;
     transition: --p 1s;
-    flex-shrink: 0; /* Mencegah lingkaran menyusut */
+    flex-shrink: 0;
 }
 
 .progress-bar-inner-circle {
@@ -248,32 +253,118 @@ button:hover {
 }
 
 /* ============================================= */
+/* ## EFEK JEJAK KURSOR (BARU) ## */
+/* ============================================= */
+.cursor-heart {
+    position: fixed; /* Agar posisi bisa diatur di seluruh layar */
+    font-size: 24px; /* Ukuran ikon hati */
+    pointer-events: none; /* Membuat ikon tidak bisa diklik/mengganggu */
+    z-index: 9999; /* Pastikan selalu di lapisan paling atas */
+    animation: trailFadeOut 0.8s forwards; /* Terapkan animasi menghilang */
+    transform: translate(-50%, -50%); /* Pusatkan ikon tepat di kursor */
+}
+
+/* Aturan animasi untuk jejak kursor */
+@keyframes trailFadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -100px) scale(0.5); /* Bergerak ke atas sambil mengecil & memudar */
+    }
+}
+
+/* ============================================= */
+/* ## ANIMASI BACKGROUND HATI ## */
+/* ============================================= */
+#background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10vh;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    animation: floatUp 15s infinite linear;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -10px;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.heart:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; transform: scale(0.6) rotate(45deg); }
+.heart:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; transform: scale(0.8) rotate(45deg); }
+.heart:nth-child(3) { left: 35%; animation-duration: 18s; animation-delay: 4s; transform: scale(0.5) rotate(45deg); }
+.heart:nth-child(4) { left: 50%; animation-duration: 14s; animation-delay: 1s; transform: scale(0.7) rotate(45deg); }
+.heart:nth-child(5) { left: 65%; animation-duration: 20s; animation-delay: 5s; transform: scale(0.9) rotate(45deg); }
+.heart:nth-child(6) { left: 75%; animation-duration: 16s; animation-delay: 3s; transform: scale(0.6) rotate(45deg); }
+.heart:nth-child(7) { left: 85%; animation-duration: 13s; animation-delay: 6s; transform: scale(1.0) rotate(45deg); }
+
+/* ============================================= */
 /* ## ATURAN RESPONSIVE (UNTUK TAMPILAN HP) ## */
 /* ============================================= */
 @media (max-width: 600px) {
     .quiz-container {
-        padding: 20px; /* Kurangi padding di layar kecil */
+        padding: 20px;
     }
 
     #opening-screen h1 {
-        font-size: 2rem; /* Kecilkan font judul utama */
+        font-size: 2rem;
     }
 
     #question-text {
-        font-size: 1.1rem; /* Kecilkan font pertanyaan */
+        font-size: 1.1rem;
     }
 
     #result-screen #love-type-title {
-        font-size: 1.7rem; /* Kecilkan font judul hasil */
+        font-size: 1.7rem;
     }
 
     .progress-bar-wrapper {
-        flex-direction: column; /* Ubah tata letak bar hasil menjadi vertikal */
+        flex-direction: column;
         gap: 10px;
         align-items: center;
     }
 
     .progress-bar-label {
-        text-align: center; /* Pusatkan teks label di bawah lingkaran */
+        text-align: center;
     }
 }
