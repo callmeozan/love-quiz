@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangular Love Scale Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <div id="opening-screen">
+            <h1>Eksplorasi Warna Cintamu</h1>
+            <p class="tagline">Kenali dirimu lebih baik, kenali cintamu lebih dalam.</p>
+            <p class="description">Tes ini terdiri dari 15 pertanyaan singkat untuk membantumu memahami tiga pilar utama dalam sebuah hubungan: Kedekatan, Gairah, dan Komitmen.</p>
+            <p class="guide"><b>Cara Mengisi:</b> Pilih opsi dari 1 (sangat tidak sesuai) hingga 5 (sangat sesuai) yang paling mewakili perasaanmu.</p>
+            <button id="start-btn">Mulai Kuis</button>
+        </div>
+
+        <div id="quiz-screen" class="hidden">
+            <div id="progress-container"><div id="progress-bar"></div></div>
+            <p id="question-number"></p>
+            <h2 id="question-text"></h2>
+            <div id="answer-options"></div>
+        </div>
+
+        <div id="result-screen" class="hidden">
+            <h3 id="love-type-title"></h3>
+            <p id="love-type-description"></p>
+            
+            <div class="bars-container">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-circular" id="intimacy-bar"><div class="progress-bar-inner-circle"><span class="progress-bar-percentage" id="intimacy-percent">0%</span></div></div>
+                    <div class="progress-bar-label"><span class="dimension-name">Kedekatan</span><span class="dimension-trait">Emosional</span></div>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-circular" id="passion-bar"><div class="progress-bar-inner-circle"><span class="progress-bar-percentage" id="passion-percent">0%</span></div></div>
+                    <div class="progress-bar-label"><span class="dimension-name">Gairah</span><span class="dimension-trait">Romansa</span></div>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-circular" id="commitment-bar"><div class="progress-bar-inner-circle"><span class="progress-bar-percentage" id="commitment-percent">0%</span></div></div>
+                    <div class="progress-bar-label"><span class="dimension-name">Komitmen</span><span class="dimension-trait">Keyakinan</span></div>
+                </div>
+            </div>
+            
+            <button id="show-more-btn">Lihat Tipe Cinta Lainnya</button>
+            <div id="other-loves" class="hidden">
+                <h4>8 Tipe Cinta Menurut Sternberg</h4>
+                </div>
+
+            <button id="restart-btn">Ulangi Kuis</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

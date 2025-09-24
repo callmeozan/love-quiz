@@ -1,0 +1,244 @@
+/* Styling Awal */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F75270; /* Warna Latar Utama */
+    color: #F8FAB4; /* Warna Font Utama */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.quiz-container {
+    background-color: #E34F74; /* Warna Latar Sekunder */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+}
+
+.hidden {
+    display: none;
+}
+
+#opening-screen h1 {
+    margin-top: 0;
+    color: #FCF7A6; /* Variasi Warna Font untuk Judul */
+}
+
+.tagline {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.description {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.guide {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #A6E3DD; /* Warna Aksen Utama */
+    color: #2c3e50;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #A2C4E1; /* Warna Aksen Sekunder untuk Hover */
+}
+
+/* Styling Halaman Kuis */
+#progress-container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    height: 10px;
+    width: 0%;
+    background-color: #A6E3DD; /* Warna Aksen Utama */
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+#question-number {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+#question-text {
+    min-height: 50px;
+    color: #FCF7A6; /* Variasi Warna Font untuk Pertanyaan */
+}
+
+#answer-options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.answer-btn {
+    background-color: transparent;
+    border: 2px solid #A6E3DD; /* Warna Aksen Utama */
+    color: #F8FAB4; /* Warna Font Utama */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.answer-btn:hover {
+    background-color: #A6E3DD; /* Warna Aksen Utama */
+    color: #2c3e50;
+    transform: scale(1.1);
+}
+
+.emoji-btn {
+    font-size: 36px;
+    padding: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.emoji-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Styling Halaman Hasil */
+#result-screen #love-type-title {
+    color: #FCF7A6; /* Variasi Warna Font untuk Judul Hasil */
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#result-screen #love-type-description {
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.bars-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@property --p {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+}
+
+.progress-bar-circular {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: --p 1s;
+}
+
+.progress-bar-inner-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #E34F74; /* Warna Latar Sekunder */
+    display: grid;
+    place-items: center;
+}
+
+.progress-bar-percentage {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FCF7A6; /* Variasi Warna Font */
+}
+
+/* Warna untuk setiap bar */
+#intimacy-bar { background: conic-gradient(#A6E3DD calc(var(--p) * 1%), #4d4d4d 0); }
+#passion-bar { background: conic-gradient(#FF8A8A calc(var(--p) * 1%), #4d4d4d 0); } /* Saya pertahankan warna merah unik untuk passion */
+#commitment-bar { background: conic-gradient(#A2C4E1 calc(var(--p) * 1%), #4d4d4d 0); } /* Warna Aksen Sekunder */
+
+.progress-bar-label {
+    text-align: left;
+}
+
+.dimension-name {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+}
+
+.dimension-trait {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+#restart-btn {
+    margin-top: 20px;
+}
+
+#show-more-btn {
+    background-color: transparent;
+    border: 2px solid #A2C4E1; /* Warna Aksen Sekunder */
+    color: #F8FAB4;
+    margin-bottom: 15px;
+}
+
+#other-loves {
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+#other-loves h4 {
+    margin-top: 0;
+    text-align: center;
+    color: #FCF7A6; /* Variasi Warna Font */
+}
+
+#other-loves p {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(248, 250, 180, 0.2);
+}
+
+#other-loves p:last-child {
+    border-bottom: none;
+}
