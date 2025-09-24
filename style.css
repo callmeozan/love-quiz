@@ -330,14 +330,6 @@ button:hover {
     }
 }
 
-.heart:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; transform: scale(0.6) rotate(45deg); }
-.heart:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; transform: scale(0.8) rotate(45deg); }
-.heart:nth-child(3) { left: 35%; animation-duration: 18s; animation-delay: 4s; transform: scale(0.5) rotate(45deg); }
-.heart:nth-child(4) { left: 50%; animation-duration: 14s; animation-delay: 1s; transform: scale(0.7) rotate(45deg); }
-.heart:nth-child(5) { left: 65%; animation-duration: 20s; animation-delay: 5s; transform: scale(0.9) rotate(45deg); }
-.heart:nth-child(6) { left: 75%; animation-duration: 16s; animation-delay: 3s; transform: scale(0.6) rotate(45deg); }
-.heart:nth-child(7) { left: 85%; animation-duration: 13s; animation-delay: 6s; transform: scale(1.0) rotate(45deg); }
-
 /* ============================================= */
 /* ## ATURAN RESPONSIVE (UNTUK TAMPILAN HP) ## */
 /* ============================================= */

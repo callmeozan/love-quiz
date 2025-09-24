@@ -1,12 +1,22 @@
 // =================================
-// MEMBUAT HATI UNTUK ANIMASI LATAR (BARU & DINAMIS)
+// MEMBUAT HATI UNTUK ANIMASI LATAR (BARU & OTOMATIS)
 // =================================
 const animationContainer = document.getElementById('background-animation');
-const numberOfHearts = 15; // <-- Ubah angka ini untuk menambah/mengurangi jumlah hati!
+const numberOfHearts = 25; // <-- Sekarang Anda bisa ubah angka ini sesuka hati!
 
-for (let i = 5; i < numberOfHearts; i++) {
+for (let i = 0; i < numberOfHearts; i++) {
     const heart = document.createElement('div');
     heart.classList.add('heart');
+    
+    // Memberi posisi, kecepatan, ukuran, & delay acak secara otomatis
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 8 + 12) + 's'; // Durasi antara 12-20 detik
+    heart.style.animationDelay = Math.random() * 5 + 's';
+    
+    // Mengatur ukuran dan rotasi awal. Ukuran antara 0.5x sampai 1.2x
+    const scale = Math.random() * 0.7 + 0.5;
+    heart.style.transform = `scale(${scale}) rotate(45deg)`;
+    
     animationContainer.appendChild(heart);
 }
 
@@ -173,26 +183,34 @@ restartBtn.addEventListener('click', startQuiz);
 showMoreBtn.addEventListener('click', toggleOtherLoves);
 
 // =================================
-// EFEK JEJAK KURSOR (BARU)
+// EFEK JEJAK KURSOR & SENTUHAN (BARU - UNTUK HP & PC)
 // =================================
-document.addEventListener('mousemove', function(e) {
-    // Buat elemen span baru setiap mouse bergerak
+
+// 1. Kita buat satu fungsi terpusat untuk menciptakan hati
+function createHeartTrail(x, y) {
     let heart = document.createElement('span');
     heart.classList.add('cursor-heart');
 
-    // Atur posisi elemen sesuai posisi kursor
-    heart.style.left = e.clientX + 'px';
-    heart.style.top = e.clientY + 'px';
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
 
-    // Isi elemen dengan emoji hati
-    heart.innerHTML = '❤️';
+    heart.innerHTML = '❤️'; // Anda bisa ganti emoji di sini
 
-    // Tambahkan elemen ke dalam body
     document.body.appendChild(heart);
 
-    // Hapus elemen setelah animasinya selesai
-    // Ini PENTING untuk menjaga performa website!
+    // Hapus elemen setelah animasinya selesai untuk menjaga performa
     heart.addEventListener('animationend', function() {
         heart.remove();
     });
+}
+
+// 2. Listener untuk gerakan mouse di PC (tetap ada)
+document.addEventListener('mousemove', function(e) {
+    createHeartTrail(e.clientX, e.clientY);
+});
+
+// 3. Listener BARU untuk gerakan sentuhan jari di HP
+document.addEventListener('touchmove', function(e) {
+    // Kita ambil posisi dari sentuhan pertama di layar
+    createHeartTrail(e.touches[0].clientX, e.touches[0].clientY);
 });
