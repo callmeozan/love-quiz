@@ -116,6 +116,29 @@ button:hover {
     font-size: 1.25rem;
 }
 
+/* Atur style dasar untuk setiap item daftar agar transisi berjalan mulus */
+#other-loves p {
+    margin-bottom: 10px;
+    padding: 10px; /* Tambahkan padding agar highlight tidak terlalu mepet */
+    border-bottom: 1px solid rgba(248, 250, 180, 0.2);
+    border-radius: 8px; /* Beri sedikit sudut membulat */
+    cursor: default; /* Ganti kursor agar terlihat seperti teks biasa */
+    
+    /* Ini kunci untuk animasi yang halus */
+    transition: all 0.3s ease;
+}
+
+#other-loves p:last-child {
+    border-bottom: none;
+}
+
+/* Ini adalah style yang akan aktif saat kursor di atas item */
+#other-loves p:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Beri warna latar gelap semi-transparan */
+    transform: scale(1.03); /* Sedikit perbesar item untuk efek 'pop' */
+    border-color: transparent; /* Sembunyikan garis bawah saat di-hover */
+}
+
 /* ============================================= */
 /* ## EFEK JEJAK KURSOR ## */
 /* ============================================= */
