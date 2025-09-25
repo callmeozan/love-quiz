@@ -139,6 +139,12 @@ button:hover {
     border-color: transparent; /* Sembunyikan garis bawah saat di-hover */
 }
 
+#other-loves p:active {
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+    border-color: transparent;
+}
+
 /* ============================================= */
 /* ## EFEK JEJAK KURSOR ## */
 /* ============================================= */
