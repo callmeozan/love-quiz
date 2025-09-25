@@ -1,22 +1,17 @@
 // =================================
-// MEMBUAT HATI UNTUK ANIMASI LATAR (BARU & OTOMATIS)
+// MEMBUAT HATI UNTUK ANIMASI LATAR
 // =================================
 const animationContainer = document.getElementById('background-animation');
-const numberOfHearts = 25; // <-- Sekarang Anda bisa ubah angka ini sesuka hati!
+const numberOfHearts = 25; 
 
 for (let i = 0; i < numberOfHearts; i++) {
     const heart = document.createElement('div');
     heart.classList.add('heart');
-    
-    // Memberi posisi, kecepatan, ukuran, & delay acak secara otomatis
     heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 8 + 12) + 's'; // Durasi antara 12-20 detik
+    heart.style.animationDuration = (Math.random() * 8 + 12) + 's';
     heart.style.animationDelay = Math.random() * 5 + 's';
-    
-    // Mengatur ukuran dan rotasi awal. Ukuran antara 0.5x sampai 1.2x
     const scale = Math.random() * 0.7 + 0.5;
     heart.style.transform = `scale(${scale}) rotate(45deg)`;
-    
     animationContainer.appendChild(heart);
 }
 
@@ -39,21 +34,21 @@ const otherLovesContainer = document.getElementById('other-loves');
 // DATA & STATE KUIS
 // =================================
 const questions = [
-    { text: "Bareng pasangan tuh rasanya hangat, kayak minum cokelat panas di malam dingin.", dimension: 'intimacy', type: 'likert' },
-    { text: "Kalau aku lagi down, pasangan selalu jadi charger emosiku.", dimension: 'intimacy', type: 'likert' },
-    { text: "Pasangan itu kayak VIP di hidupku, nomor satu di hati.", dimension: 'intimacy', type: 'likert' },
-    { text: "Hubungan kami tuh bikin aku nyaman, kayak pakai hoodie kesayangan.", dimension: 'intimacy', type: 'likert' },
-    { text: "Dia ngerti aku bahkan tanpa aku ngomong banyak.", dimension: 'intimacy', type: 'likert' },
-    { text: "Hubungan ini kadang bikin aku merasa kayak main film romantis.", dimension: 'passion', type: 'likert' },
+    { text: "Bareng pasangan itu rasanya hangat, seperti minum cokelat panas di malam yang dingin", dimension: 'intimacy', type: 'likert', images: ['assets/1.png']},
+    { text: "Kalau aku lagi down, pasangan selalu jadi charger emosiku.", dimension: 'intimacy', type: 'likert', images: ['assets/2.png'] },
+    { text: "Pasangan itu kayak VIP di hidupku, nomor satu di hati.", dimension: 'intimacy', type: 'likert', images: ['assets/3.png'] },
+    { text: "Hubungan kami tuh bikin aku nyaman, kayak pakai hoodie kesayangan.", dimension: 'intimacy', type: 'likert', images: ['assets/4.png', 'assets/5.png'] },
+    { text: "Dia ngerti aku bahkan tanpa aku ngomong banyak.", dimension: 'intimacy', type: 'likert', images: ['assets/6.png'] },
+    { text: "Hubungan ini kadang bikin aku merasa kayak main film romantis.", dimension: 'passion', type: 'likert', images: ['assets/7.png'] },
     { text: "Pilih emoji yang paling pas menggambarkan gairah di hubungan kalian:", dimension: 'passion', type: 'emoji', options: ['❄️', '💧', '😊', '🔥', '💥'] },
-    { text: "Nggak ada orang lain yang bisa bikin aku se-happy ini.", dimension: 'passion', type: 'likert' },
-    { text: "Kadang hubungan kami terasa penuh spark, kayak ada efek kembang api.", dimension: 'passion', type: 'likert' },
-    { text: "Deg-degan dan penuh passion — itulah aku kalau mikirin dia.", dimension: 'passion', type: 'likert' },
+    { text: "Nggak ada orang lain yang bisa bikin aku se-happy ini.", dimension: 'passion', type: 'likert', images: ['assets/8.png'] },
+    { text: "Kadang hubungan kami terasa penuh spark, kayak ada efek kembang api.", dimension: 'passion', type: 'likert', images: ['assets/15.png'] },
+    { text: "Deg-degan dan penuh passion — itulah aku kalau mikirin dia.", dimension: 'passion', type: 'likert', images: ['assets/9.png', 'assets/10.png'] },
     { text: "Seberapa kuat komitmenmu? Pilih ikon yang mewakili:", dimension: 'commitment', type: 'emoji', options: ['🤔', '📝', '🤝', '🔒', '💍'] },
-    { text: "Komitmenku ke pasangan kuat banget, kayak password 16 karakter.", dimension: 'commitment', type: 'likert' },
-    { text: "Aku yakin banget sama cintaku ke dia, no doubt.", dimension: 'commitment', type: 'likert' },
-    { text: "Buatku, hubungan ini bukan sementara — ini long-term plan.", dimension: 'commitment', type: 'likert' },
-    { text: "Aku merasa punya tanggung jawab buat jaga dia, kayak guardian di game.", dimension: 'commitment', type: 'likert' }
+    { text: "Komitmenku ke pasangan kuat banget, kayak password 16 karakter.", dimension: 'commitment', type: 'likert', images: ['assets/14.png'] },
+    { text: "Aku yakin banget sama cintaku ke dia, no doubt.", dimension: 'commitment', type: 'likert', images: ['assets/11.png'] },
+    { text: "Buatku, hubungan ini bukan sementara — ini long-term plan.", dimension: 'commitment', type: 'likert', images: ['assets/12.png'] },
+    { text: "Aku merasa punya tanggung jawab buat jaga dia, kayak guardian di game.", dimension: 'commitment', type: 'likert', images: ['assets/13.png'] }
 ];
 
 const loveTypes = {
@@ -73,7 +68,6 @@ let scores = { intimacy: 0, passion: 0, commitment: 0 };
 // =================================
 // FUNGSI-FUNGSI UTAMA
 // =================================
-
 function startQuiz() {
     currentQuestionIndex = 0;
     scores = { intimacy: 0, passion: 0, commitment: 0 };
@@ -83,14 +77,37 @@ function startQuiz() {
     showQuestion();
 }
 
+// GANTI SELURUH FUNGSI LAMA DENGAN YANG BARU INI
 function showQuestion() {
     answerOptions.innerHTML = '';
     const progressPercentage = (currentQuestionIndex / questions.length) * 100;
     progressBar.style.width = `${progressPercentage}%`;
     questionNumber.textContent = `Pertanyaan ${currentQuestionIndex + 1} dari ${questions.length}`;
+    
     const currentQuestion = questions[currentQuestionIndex];
+    // Ambil kontainer gambar yang baru
+    const imagesContainer = document.getElementById('question-images-container');
+
     questionText.textContent = currentQuestion.text;
 
+    // KOSONGKAN KONTAINER GAMBAR DARI PERTANYAAN SEBELUMNYA
+    imagesContainer.innerHTML = '';
+
+    // Logika baru untuk menampilkan BANYAK gambar
+    if (currentQuestion.images && currentQuestion.images.length > 0) {
+        // Jika ada array 'images' dan tidak kosong
+        currentQuestion.images.forEach(imageUrl => {
+            const imgElement = document.createElement('img');
+            imgElement.src = imageUrl;
+            imgElement.classList.add('question-image-item'); // Tambahkan class untuk styling
+            imagesContainer.appendChild(imgElement);
+        });
+        imagesContainer.classList.remove('hidden'); // Tampilkan kontainer
+    } else {
+        imagesContainer.classList.add('hidden'); // Sembunyikan jika tidak ada gambar
+    }
+
+    // Sisa fungsi untuk menampilkan tombol jawaban (tidak berubah)
     if (currentQuestion.type === 'emoji') {
         currentQuestion.options.forEach((emoji, index) => {
             const button = document.createElement('button');
@@ -110,6 +127,7 @@ function showQuestion() {
     }
 }
 
+// FUNGSI INI SEKARANG SUDAH LENGKAP KEMBALI
 function selectAnswer(value, dimension) {
     scores[dimension] += value;
     currentQuestionIndex++;
@@ -120,27 +138,24 @@ function selectAnswer(value, dimension) {
     }
 }
 
+// FUNGSI INI JUGA LENGKAP
 function showResult() {
     quizScreen.classList.add('hidden');
     resultScreen.classList.remove('hidden');
-
     const maxScorePerDimension = 25;
     const intimacyPercentage = Math.round((scores.intimacy / maxScorePerDimension) * 100);
     const passionPercentage = Math.round((scores.passion / maxScorePerDimension) * 100);
     const commitmentPercentage = Math.round((scores.commitment / maxScorePerDimension) * 100);
-
     document.getElementById('intimacy-bar').style.setProperty('--p', intimacyPercentage);
     document.getElementById('intimacy-percent').textContent = `${intimacyPercentage}%`;
     document.getElementById('passion-bar').style.setProperty('--p', passionPercentage);
     document.getElementById('passion-percent').textContent = `${passionPercentage}%`;
     document.getElementById('commitment-bar').style.setProperty('--p', commitmentPercentage);
     document.getElementById('commitment-percent').textContent = `${commitmentPercentage}%`;
-
     const threshold = 40;
     const hasIntimacy = intimacyPercentage > threshold;
     const hasPassion = passionPercentage > threshold;
     const hasCommitment = commitmentPercentage > threshold;
-
     let loveTypeName = 'nonlove';
     if (hasIntimacy && !hasPassion && !hasCommitment) loveTypeName = 'liking';
     else if (!hasIntimacy && hasPassion && !hasCommitment) loveTypeName = 'infatuated';
@@ -149,28 +164,33 @@ function showResult() {
     else if (hasIntimacy && !hasPassion && hasCommitment) loveTypeName = 'companionate';
     else if (!hasIntimacy && hasPassion && hasCommitment) loveTypeName = 'fatuous';
     else if (hasIntimacy && hasPassion && hasCommitment) loveTypeName = 'consummate';
-
     const resultType = loveTypes[loveTypeName];
     document.getElementById('love-type-title').textContent = resultType.title;
     document.getElementById('love-type-description').textContent = resultType.description;
-
     otherLovesContainer.classList.add('hidden');
     showMoreBtn.textContent = 'Lihat Tipe Cinta Lainnya';
 }
 
+// VERSI BARU YANG DIPERBAIKI
 function toggleOtherLoves() {
-    otherLovesContainer.classList.toggle('hidden');
+    otherLovesContainer.classList.toggle('hidden'); // Tetap menampilkan/menyembunyikan kontainer
+
     if (otherLovesContainer.classList.contains('hidden')) {
         showMoreBtn.textContent = 'Lihat Tipe Cinta Lainnya';
     } else {
         showMoreBtn.textContent = 'Sembunyikan';
-        if (otherLovesContainer.innerHTML.includes('h4')) return;
         
-        otherLovesContainer.innerHTML = '<h4>8 Tipe Cinta Menurut Sternberg</h4>';
-        for (const type in loveTypes) {
-            const p = document.createElement('p');
-            p.innerHTML = `<b>${loveTypes[type].title}:</b> ${loveTypes[type].description}`;
-            otherLovesContainer.appendChild(p);
+        // Cek apakah daftar sudah pernah dibuat. Jika belum, buat sekarang.
+        if (otherLovesContainer.childElementCount <= 1) { 
+            // Kosongkan dulu untuk jaga-jaga
+            otherLovesContainer.innerHTML = '<h4>8 Tipe Cinta Menurut Sternberg</h4>';
+
+            // Loop untuk menambahkan semua tipe cinta
+            for (const type in loveTypes) {
+                const p = document.createElement('p');
+                p.innerHTML = `<b>${loveTypes[type].title}:</b> ${loveTypes[type].description}`;
+                otherLovesContainer.appendChild(p);
+            }
         }
     }
 }
@@ -183,10 +203,10 @@ restartBtn.addEventListener('click', startQuiz);
 showMoreBtn.addEventListener('click', toggleOtherLoves);
 
 // =================================
-// EFEK JEJAK KURSOR & SENTUHAN (BARU - UNTUK HP & PC)
+// EFEK JEJAK KURSOR & SENTUHAN (UNTUK HP & PC)
 // =================================
 
-// 1. Kita buat satu fungsi terpusat untuk menciptakan hati
+// 1. Fungsi terpusat untuk menciptakan hati
 function createHeartTrail(x, y) {
     let heart = document.createElement('span');
     heart.classList.add('cursor-heart');
@@ -194,7 +214,7 @@ function createHeartTrail(x, y) {
     heart.style.left = x + 'px';
     heart.style.top = y + 'px';
 
-    heart.innerHTML = '❤️'; // Anda bisa ganti emoji di sini
+    heart.innerHTML = '❤️';
 
     document.body.appendChild(heart);
 
@@ -204,13 +224,17 @@ function createHeartTrail(x, y) {
     });
 }
 
-// 2. Listener untuk gerakan mouse di PC (tetap ada)
+// 2. Listener untuk gerakan mouse di PC
 document.addEventListener('mousemove', function(e) {
     createHeartTrail(e.clientX, e.clientY);
 });
 
-// 3. Listener BARU untuk gerakan sentuhan jari di HP
+// 3. Listener untuk sentuhan pertama (TAP) di HP
+document.addEventListener('touchstart', function(e) {
+    createHeartTrail(e.touches[0].clientX, e.touches[0].clientY);
+});
+
+// 4. Listener untuk gerakan mengusap (SWIPE) di HP
 document.addEventListener('touchmove', function(e) {
-    // Kita ambil posisi dari sentuhan pertama di layar
     createHeartTrail(e.touches[0].clientX, e.touches[0].clientY);
 });
