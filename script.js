@@ -48,7 +48,7 @@ const questions = [
     { text: "Saya memiliki hubungan yang romantis dengan pasangan.", dimension: 'passion', type: 'likert', images: ['assets/7.png'] },
     { text: "Saya merasa pasangan saya adalah pribadi yang sangat menarik.", dimension: 'passion', type: 'likert', images: ['assets/'] },
     // { text: "Pilih emoji yang paling pas menggambarkan gairah di hubungan kalian:", dimension: 'passion', type: 'emoji', options: ['❄️', '💧', '😊', '🔥', '💥'] },
-    { text: "Saya tak bisa membayangkan orang lain mampu membahagiakan saya seperti yang pasangan lakukan.", dimension: 'passion', type: type: 'likert },
+    { text: "Saya tak bisa membayangkan orang lain mampu membahagiakan saya seperti yang pasangan lakukan.", dimension: 'passion', type: 'likert' },
     // { text: "Nggak ada orang lain yang bisa bikin aku se-happy ini.", dimension: 'passion', type: 'likert', images: ['assets/8.png'] },
     { text: "Saya memiliki hubungan yang 'ajaib' dengan pasangan.", dimension: 'passion', type: 'likert', images: ['assets/8.png'] },
     // { text: "Kadang hubungan kami terasa penuh spark, kayak ada efek kembang api.", dimension: 'passion', type: 'likert', images: ['assets/15.png'] },
