@@ -56,7 +56,7 @@ const questions = [
     // { text: "Deg-degan dan penuh passion — itulah aku kalau mikirin dia.", dimension: 'passion', type: 'likert', images: ['assets/9.png', 'assets/10.png'] },
     { text: "Saya yakin hubungan dengan pasangan akan berjalan baik-baik saja.", dimension: 'passion', type: 'likert', images: ['assets/9.png', 'assets/10.png'] },
     // { text: "Seberapa kuat komitmenmu? Pilih ikon yang mewakili:", dimension: 'commitment', type: 'emoji', options: ['🤔', '📝', '🤝', '🔒', '💍'] },
-    { text: "Saya memandang komitmen terhadap pasangan adalah hal yang penting.", dimension: 'commitment', type: type: 'likert'},
+    { text: "Saya memandang komitmen terhadap pasangan adalah hal yang penting.", dimension: 'commitment', type: 'likert'},
     // { text: "Komitmenku ke pasangan kuat banget, kayak password 16 karakter.", dimension: 'commitment', type: 'likert', images: ['assets/14.png'] },
     { text: "Saya yakin mencintai pasangan seutuhnya.", dimension: 'commitment', type: 'likert', images: ['assets/14.png'] },
     // { text: "Aku yakin banget sama cintaku ke dia, no doubt.", dimension: 'commitment', type: 'likert', images: ['assets/11.png'] },
